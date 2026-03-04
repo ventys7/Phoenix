@@ -1,0 +1,9 @@
+build/
+DerivedData/
+*.xcuserdata
+*.xcuserstate
+.DS_Store
+.idea/
+.opencode/
+.vscode/
+opencode.json

@@ -1,0 +1,33 @@
+name: PhoenixServer
+options:
+  bundleIdPrefix: com.phoenix
+  deploymentTarget:
+    macOS: "12.0"
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "12.0"
+
+targets:
+  PhoenixServer:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+        type: group
+    settings:
+      base:
+        INFOPLIST_FILE: Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.phoenix.PhoenixServer
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGNING_REQUIRED: "NO"
+        ENABLE_HARDENED_RUNTIME: "NO"
+    dependencies:
+      - sdk: AVFoundation.framework
+      - sdk: CoreGraphics.framework
+      - sdk: CoreMedia.framework
+      - sdk: CoreVideo.framework
+      - sdk: QuartzCore.framework
+      - sdk: VideoToolbox.framework

@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		018BC84B06063039D4B43173 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB2AE69849586D141C9505A /* CoreMedia.framework */; };
+		0E5E956E5B6DAAACFC58EAB7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EBAB2B5B84F5FCE0EEB134 /* AVFoundation.framework */; };
+		1D31B0730FED1EDFAD14AADB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BBD6F7E56C70F6A50D15F03 /* CoreVideo.framework */; };
+		2766F5F6917E7BCA029CE8AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB87E1ED73F561287EC704B /* ContentView.swift */; };
+		8E971B77588C515E2CCD2CC7 /* BonjourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC05D8067BFB5DBF4ED671 /* BonjourService.swift */; };
+		97E5D72AFE4CB28FCCBE39E4 /* UDPStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEF22A3612E7C2B4FA166 /* UDPStreamer.swift */; };
+		A025EF323C79B5807CA3EC71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930225B8E3F71FF79BD4B899 /* CoreGraphics.framework */; };
+		A1BA5A8159953096FE35D937 /* TouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591686C1F84071DFE15E11EB /* TouchManager.swift */; };
+		B43F28E0B95B117371E9AF7E /* DisplaySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFF8C7A0ADC80E64CD2150 /* DisplaySource.swift */; };
+		B9DBB3EE965A095427299208 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DC461E8F9A66E44AB389D7 /* VideoToolbox.framework */; };
+		C659AB7B4D8F2DA7F53F1126 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB617D0BFED95CE479FE99DC /* ServerManager.swift */; };
+		CE8134EFA19EB4C99BEE44EB /* PhoenixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE3350809B171BC747E8F /* PhoenixApp.swift */; };
+		D29F12B3ED08C880AFF0B5D1 /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5C59F4B8B189A53A9DCDE /* PermissionsManager.swift */; };
+		D5F01E420217A2BE8038322B /* GPUVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF08E783416F0CC278D2CDA4 /* GPUVideoEncoder.swift */; };
+		FC4F8E8EF2B1B47A02FD6F97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5635280EF3A05E76A5AC692F /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3BBD6F7E56C70F6A50D15F03 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		435EEF22A3612E7C2B4FA166 /* UDPStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPStreamer.swift; sourceTree = "<group>"; };
+		52C0C7372F58642700951545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55EBAB2B5B84F5FCE0EEB134 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5635280EF3A05E76A5AC692F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		57FC05D8067BFB5DBF4ED671 /* BonjourService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourService.swift; sourceTree = "<group>"; };
+		591686C1F84071DFE15E11EB /* TouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchManager.swift; sourceTree = "<group>"; };
+		6EB2AE69849586D141C9505A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		72C5C59F4B8B189A53A9DCDE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
+		8BB87E1ED73F561287EC704B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		930225B8E3F71FF79BD4B899 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95865DE7B06FCDCE159AA700 /* PhoenixServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoenixServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB617D0BFED95CE479FE99DC /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		B6BFF8C7A0ADC80E64CD2150 /* DisplaySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySource.swift; sourceTree = "<group>"; };
+		CB0DE3350809B171BC747E8F /* PhoenixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoenixApp.swift; sourceTree = "<group>"; };
+		D3DC461E8F9A66E44AB389D7 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		DF08E783416F0CC278D2CDA4 /* GPUVideoEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPUVideoEncoder.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		976E94F026C819DFB254DCFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5E956E5B6DAAACFC58EAB7 /* AVFoundation.framework in Frameworks */,
+				A025EF323C79B5807CA3EC71 /* CoreGraphics.framework in Frameworks */,
+				018BC84B06063039D4B43173 /* CoreMedia.framework in Frameworks */,
+				1D31B0730FED1EDFAD14AADB /* CoreVideo.framework in Frameworks */,
+				FC4F8E8EF2B1B47A02FD6F97 /* QuartzCore.framework in Frameworks */,
+				B9DBB3EE965A095427299208 /* VideoToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05129787B847DCD14AF3A0D4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A44DFBEA7B1DE7481746C501 /* App */,
+				6EB7F119B78130594F20BE31 /* Capture */,
+				AF3D06D36ABA100C7EA4222C /* Managers */,
+				E53CEA942DDF25ECBB0B09FD /* Network */,
+				43D2387F7A9F0360D06E562C /* Video */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		244396DF89682071CD16D7CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95865DE7B06FCDCE159AA700 /* PhoenixServer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E158F63F88C201C9C82CE5B = {
+			isa = PBXGroup;
+			children = (
+				52C0C7372F58642700951545 /* Assets.xcassets */,
+				05129787B847DCD14AF3A0D4 /* Sources */,
+				B2415FD0070DF8A4E9E365EB /* Frameworks */,
+				244396DF89682071CD16D7CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43D2387F7A9F0360D06E562C /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				DF08E783416F0CC278D2CDA4 /* GPUVideoEncoder.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		6EB7F119B78130594F20BE31 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B6BFF8C7A0ADC80E64CD2150 /* DisplaySource.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		A44DFBEA7B1DE7481746C501 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8BB87E1ED73F561287EC704B /* ContentView.swift */,
+				CB0DE3350809B171BC747E8F /* PhoenixApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AF3D06D36ABA100C7EA4222C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				57FC05D8067BFB5DBF4ED671 /* BonjourService.swift */,
+				72C5C59F4B8B189A53A9DCDE /* PermissionsManager.swift */,
+				AB617D0BFED95CE479FE99DC /* ServerManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B2415FD0070DF8A4E9E365EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55EBAB2B5B84F5FCE0EEB134 /* AVFoundation.framework */,
+				930225B8E3F71FF79BD4B899 /* CoreGraphics.framework */,
+				6EB2AE69849586D141C9505A /* CoreMedia.framework */,
+				3BBD6F7E56C70F6A50D15F03 /* CoreVideo.framework */,
+				5635280EF3A05E76A5AC692F /* QuartzCore.framework */,
+				D3DC461E8F9A66E44AB389D7 /* VideoToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E53CEA942DDF25ECBB0B09FD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				591686C1F84071DFE15E11EB /* TouchManager.swift */,
+				435EEF22A3612E7C2B4FA166 /* UDPStreamer.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		59633DEDF4EAA1DB3E76E37A /* PhoenixServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BD52C610C0313FCA8EC73BA /* Build configuration list for PBXNativeTarget "PhoenixServer" */;
+			buildPhases = (
+				FA2B3813D1F4BAC093574E29 /* Sources */,
+				976E94F026C819DFB254DCFA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhoenixServer;
+			packageProductDependencies = (
+			);
+			productName = PhoenixServer;
+			productReference = 95865DE7B06FCDCE159AA700 /* PhoenixServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		713B0C7714C52EA2470F7197 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = E9C7D27BA3331B8239518A12 /* Build configuration list for PBXProject "PhoenixServer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3E158F63F88C201C9C82CE5B;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59633DEDF4EAA1DB3E76E37A /* PhoenixServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA2B3813D1F4BAC093574E29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E971B77588C515E2CCD2CC7 /* BonjourService.swift in Sources */,
+				2766F5F6917E7BCA029CE8AE /* ContentView.swift in Sources */,
+				B43F28E0B95B117371E9AF7E /* DisplaySource.swift in Sources */,
+				D5F01E420217A2BE8038322B /* GPUVideoEncoder.swift in Sources */,
+				D29F12B3ED08C880AFF0B5D1 /* PermissionsManager.swift in Sources */,
+				CE8134EFA19EB4C99BEE44EB /* PhoenixApp.swift in Sources */,
+				C659AB7B4D8F2DA7F53F1126 /* ServerManager.swift in Sources */,
+				A1BA5A8159953096FE35D937 /* TouchManager.swift in Sources */,
+				97E5D72AFE4CB28FCCBE39E4 /* UDPStreamer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1ADA0FDFDD3FF6BF8E6CBDC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		5F4CC97139B0FDCF83FD6522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				AUTOMATION_APPLE_EVENTS = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.PhoenixServer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		833C8CFC125E57A6D8873F27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				AUTOMATION_APPLE_EVENTS = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.PhoenixServer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EB7AB85BAC108F789F06E170 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BD52C610C0313FCA8EC73BA /* Build configuration list for PBXNativeTarget "PhoenixServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				833C8CFC125E57A6D8873F27 /* Debug */,
+				5F4CC97139B0FDCF83FD6522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E9C7D27BA3331B8239518A12 /* Build configuration list for PBXProject "PhoenixServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1ADA0FDFDD3FF6BF8E6CBDC5 /* Debug */,
+				EB7AB85BAC108F789F06E170 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 713B0C7714C52EA2470F7197 /* Project object */;
+}
