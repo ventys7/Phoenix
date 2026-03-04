@@ -6,11 +6,6 @@ The project streams the Mac screen to the tablet via H.264 and sends touch event
 
 ---
 
-### 🏗 Architecture & Workflow
-
-1. **Discovery (mDNS/Bonjour):** The server publishes a `_phoenix._udp` service. The client automatically finds the Mac's IP.
-2. **Video Stream (UDP 5554):** The server captures the screen using VideoToolbox (H.264 Annex-B) and sends it to the client.
-
 ### ⚠️ Current Status: Touch Input (Incomplete)
 **Important:** While the project handles video streaming successfully, the touch functionality is **very incomplete**. 
 The code contains only a basic skeleton/draft for touch events. It is not functional and requires significant work to be implemented properly.
@@ -32,6 +27,15 @@ I have officially reached my personal goal for this project: **low-latency scree
 1. **Requirements:** Android Studio, target device with Android 4.4+ (API 19).
 2. **Setup:** The app uses mDNS to find the Mac. If discovery fails, enter the IP manually.
 3. **Connect:** Once connected, the tablet will display the Mac's screen.
+
+---
+
+### ⚙️ Manual Configuration (Crucial)
+Since this project was built for personal use, some IP addresses are currently hardcoded. You **must** update them to match your own network:
+
+1. **Server Side (macOS):** Open `PhoenixServer/Sources/Managers/ServerManager.swift` and replace the placeholder IP with your **Android Tablet's Local IP** (you can find this in your Tablet's Wi-Fi settings).
+   
+2. **Client Side (Android):** When you launch the app on your tablet, you will need to manually enter your **MacBook's Local IP** to establish the connection.
 
 ---
 
