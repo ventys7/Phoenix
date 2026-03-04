@@ -6,12 +6,14 @@ The project streams the Mac screen to the tablet via H.264 and sends touch event
 
 ---
 
-### ⚠️ Current Status: Touch Input (Incomplete)
+### ⚠️ Current Status: Touch Input Incomplete
 **Important:** While the project handles video streaming successfully, the touch functionality is **very incomplete**. 
 The code contains only a basic skeleton/draft for touch events. It is not functional and requires significant work to be implemented properly.
 
 ### 🛑 Project Status: Accomplished
-I have officially reached my personal goal for this project: **low-latency screen streaming from Mac to an old tablet.** This was tested and verified on a device with an **MTK (MediaTek) chipset**. 
+I have officially reached my personal goal for this project: **low-latency screen streaming from Mac to an old tablet.** 
+* This was tested and verified on a device with an **MTK (MediaTek) chipset**.
+* **Usage Tip:** I personally use this as a **third monitor** by creating a virtual display with **BetterDisplay** on macOS and streaming that specific window/display to the tablet.
 * **Maintenance:** Since the streaming works for my specific needs, **I will not be providing any further updates, fixes, or touch implementations.**
 
 ---
