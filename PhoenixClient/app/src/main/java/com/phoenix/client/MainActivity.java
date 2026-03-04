@@ -10,15 +10,13 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.IOException;
+import android.view.SurfaceView;
 
 public class MainActivity extends Activity {
     private static final String TAG = "PhoenixClient";
@@ -28,6 +26,7 @@ public class MainActivity extends Activity {
     private EditText ipInput;
     private Button connectButton;
     private TextView statusText;
+    private LinearLayout controlsLayout;
 
     private VideoDecoder videoDecoder;
     private VideoReceiver videoReceiver;
@@ -35,26 +34,30 @@ public class MainActivity extends Activity {
 
     private Handler mainHandler;
     private boolean isConnected = false;
+    private boolean isUiVisible = true;
 
-    // Discovery components
     private NsdManager mNsdManager;
     private NsdManager.DiscoveryListener mDiscoveryListener;
     private WifiManager.MulticastLock multicastLock;
+
+    // Timer per nascondere la UI
+    private final Runnable hideUiRunnable = new Runnable() {
+        @Override
+        public void run() {
+            hideSystemUI();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // --- FIX: NETWORK ON MAIN THREAD ---
-        // Questa patch evita il crash "NetworkOnMainThreadException"
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
-        // Mantiene lo schermo acceso durante lo streaming
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         setContentView(R.layout.activity_main);
         mainHandler = new Handler();
 
@@ -62,10 +65,9 @@ public class MainActivity extends Activity {
         ipInput = (EditText) findViewById(R.id.ipInput);
         connectButton = (Button) findViewById(R.id.connectButton);
         statusText = (TextView) findViewById(R.id.statusText);
+        controlsLayout = (LinearLayout) findViewById(R.id.controlsLayout);
 
-        // Forza il tablet a "sentire" i pacchetti mDNS (Bonjour) del Mac
         setupMulticast();
-
         mNsdManager = (NsdManager) getSystemService(Context.NSD_SERVICE);
         initializeDiscoveryListener();
 
@@ -79,10 +81,15 @@ public class MainActivity extends Activity {
         surfaceView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                // Se la UI è nascosta, la mostriamo al tocco
+                if (!isUiVisible) {
+                    showSystemUI();
+                    return true;
+                }
+
+                // Logica originale del touch sender verso il Mac
                 if (!isConnected || touchSender == null) return false;
 
-                // Calcolo coordinate relative al desktop Mac (1024x768)
-                // Usiamo float per precisione e poi castiamo a int
                 int x = (int) (event.getX() * 1024 / surfaceView.getWidth());
                 int y = (int) (event.getY() * 768 / surfaceView.getHeight());
 
@@ -99,13 +106,95 @@ public class MainActivity extends Activity {
                             break;
                     }
                 } catch (Exception e) {
-                    Log.e(TAG, "Errore invio touch", e);
+                    Log.e(TAG, "Errore touch", e);
                 }
                 return true;
             }
         });
 
         startDiscovery();
+    }
+
+    private void hideSystemUI() {
+        isUiVisible = false;
+        controlsLayout.setVisibility(View.GONE);
+        statusText.setVisibility(View.GONE);
+
+        // KitKat Immersive Mode
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void showSystemUI() {
+        isUiVisible = true;
+        controlsLayout.setVisibility(View.VISIBLE);
+        statusText.setVisibility(View.VISIBLE);
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+        // Se siamo connessi, facciamo ripartire il timer per nasconderla di nuovo
+        if (isConnected) {
+            startUiHideTimer();
+        }
+    }
+
+    private void startUiHideTimer() {
+        mainHandler.removeCallbacks(hideUiRunnable);
+        mainHandler.postDelayed(hideUiRunnable, 3000);
+    }
+
+    private void connect() {
+        final String ip = ipInput.getText().toString().trim();
+        if (ip.isEmpty()) return;
+
+        try {
+            videoDecoder = new VideoDecoder(surfaceView.getHolder().getSurface());
+            videoDecoder.start();
+
+            videoReceiver = new VideoReceiver(videoDecoder);
+            videoReceiver.start();
+
+            touchSender = new TouchSender();
+            touchSender.connect(ip);
+
+            isConnected = true;
+            connectButton.setText("Disconnect");
+            statusText.setText("Connesso a " + ip);
+
+            // Nasconde tutto dopo 3 secondi
+            startUiHideTimer();
+
+        } catch (Exception e) {
+            statusText.setText("Errore: " + e.getMessage());
+            disconnect();
+        }
+    }
+
+    private void disconnect() {
+        isConnected = false;
+        mainHandler.removeCallbacks(hideUiRunnable);
+        showSystemUI();
+
+        try {
+            if (videoReceiver != null) videoReceiver.stop();
+            if (videoDecoder != null) videoDecoder.stop();
+            if (touchSender != null) touchSender.disconnect();
+        } catch (Exception e) {}
+
+        videoReceiver = null;
+        videoDecoder = null;
+        touchSender = null;
+
+        connectButton.setText("Connect");
+        statusText.setText("Disconnesso");
     }
 
     private void setupMulticast() {
@@ -120,10 +209,7 @@ public class MainActivity extends Activity {
     private void initializeDiscoveryListener() {
         mDiscoveryListener = new NsdManager.DiscoveryListener() {
             @Override
-            public void onDiscoveryStarted(String regType) {
-                Log.d(TAG, "Ricerca Mac avviata...");
-            }
-
+            public void onDiscoveryStarted(String regType) {}
             @Override
             public void onServiceFound(final NsdServiceInfo serviceInfo) {
                 mNsdManager.resolveService(serviceInfo, new NsdManager.ResolveListener() {
@@ -131,25 +217,16 @@ public class MainActivity extends Activity {
                     public void onServiceResolved(final NsdServiceInfo resolvedInfo) {
                         final String hostIp = resolvedInfo.getHost().getHostAddress();
                         mainHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
+                            @Override public void run() {
                                 ipInput.setText(hostIp);
                                 statusText.setText("Mac trovato: " + hostIp);
                             }
                         });
                     }
-                    @Override
-                    public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {
-                        Log.e(TAG, "Errore risoluzione: " + errorCode);
-                    }
+                    @Override public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {}
                 });
             }
-
-            @Override public void onServiceLost(NsdServiceInfo n) {
-                mainHandler.post(new Runnable() {
-                    @Override public void run() { statusText.setText("Connessione Mac persa"); }
-                });
-            }
+            @Override public void onServiceLost(NsdServiceInfo n) {}
             @Override public void onDiscoveryStopped(String s) {}
             @Override public void onStartDiscoveryFailed(String s, int e) {}
             @Override public void onStopDiscoveryFailed(String s, int e) {}
@@ -157,58 +234,7 @@ public class MainActivity extends Activity {
     }
 
     private void startDiscovery() {
-        try {
-            mNsdManager.discoverServices(SERVICE_TYPE, NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener);
-        } catch (Exception e) {
-            Log.e(TAG, "Errore discovery", e);
-        }
-    }
-
-    private void connect() {
-        final String ip = ipInput.getText().toString().trim();
-        if (ip.isEmpty()) return;
-
-        try {
-            // Setup Video Decoder con la Surface attuale
-            videoDecoder = new VideoDecoder(surfaceView.getHolder().getSurface());
-            videoDecoder.start();
-
-            // Setup Video Receiver
-            videoReceiver = new VideoReceiver(videoDecoder);
-            videoReceiver.start();
-
-            // Setup Touch
-            touchSender = new TouchSender();
-            touchSender.connect(ip);
-
-            isConnected = true;
-            connectButton.setText("Disconnect");
-            statusText.setText("Connesso a " + ip);
-            Log.d(TAG, "Streaming avviato con successo");
-
-        } catch (Exception e) {
-            Log.e(TAG, "Errore connessione", e);
-            statusText.setText("Errore: " + e.getMessage());
-            disconnect();
-        }
-    }
-
-    private void disconnect() {
-        isConnected = false;
-        try {
-            if (videoReceiver != null) videoReceiver.stop();
-            if (videoDecoder != null) videoDecoder.stop();
-            if (touchSender != null) touchSender.disconnect();
-        } catch (Exception e) {
-            Log.e(TAG, "Errore durante disconnect", e);
-        }
-
-        videoReceiver = null;
-        videoDecoder = null;
-        touchSender = null;
-
-        connectButton.setText("Connect");
-        statusText.setText("Disconnesso");
+        try { mNsdManager.discoverServices(SERVICE_TYPE, NsdManager.PROTOCOL_DNS_SD, mDiscoveryListener); } catch (Exception e) {}
     }
 
     @Override
@@ -227,9 +253,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        if (multicastLock != null && multicastLock.isHeld()) {
-            multicastLock.release();
-        }
+        if (multicastLock != null && multicastLock.isHeld()) multicastLock.release();
         disconnect();
         super.onDestroy();
     }
