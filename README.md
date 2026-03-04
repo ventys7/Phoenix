@@ -42,7 +42,7 @@ Since this project was built for personal use, some IP addresses are currently h
 ---
 
 ### 🛠 Troubleshooting
-* **Discovery Fails:** Ensure both devices are on the same Wi-Fi. Check if your router blocks multicast/mDNS.
+* **Discovery Fails:** Ensure both devices are on the same Wi-Fi.
 * **Lag/Freeze:** UDP is fast but unstable on crowded Wi-Fi. If you experience lag, it's likely your Wi-Fi or bitrate settings. Fix it yourself, I'm done here! 😂
 
 ---
