@@ -45,4 +45,5 @@ I have officially reached my personal goal for this project: **low-latency scree
 This project is a labor of love dedicated to giving old hardware a new purpose.
 
 Development: 100% AI-generated. As a "non-developer", I directed the AI to write every line of code, handle logic, and fix bugs to bring my ideas to life.
+  
 Philosophy: Sharing this "AI-authored" experiment because if it solved a streaming problem for me, it might be the foundation you were looking for.
