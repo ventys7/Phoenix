@@ -2,7 +2,7 @@
 
 **Phoenix** is a low-latency extension system. It allows you to use an old Android tablet (starting from Android 4.4 KitKat) as a secondary interface for your Mac. 
 
-The project streams the Mac screen to the tablet via H.264 and sends touch events back to macOS via UDP, effectively turning an obsolete device into a modern productivity tool.
+The project streams the Mac screen to the tablet via H.264 and sends events back to macOS via UDP, effectively turning an obsolete device into a modern productivity tool.
 
 ---
 
